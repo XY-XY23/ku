@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><使用记事本创建HTML5页面</title>
+</head>
+<body style="background:url(4a28f13625285c77.jpg)">
+<a href="http://www.baidu.com">百度</a><!给文件设置注释>
+<h1 style="font-size:12px;">这是1级标题</h1>
+<h2 style="font-size:12px;">这是2级标题</h2>
+<h3 style="font-size:12px;">这是3级标题</h3>
+<h4 style="font-size:12px;" >这是4级标题</h4>
+<h6 style="font-size:12px;">这也是六级标题</h6>
+<strong>文本以粗体显示</strong>或<b>
+<em>文本以斜体显示</em>或<i>
+<del>文本添加删除线</del>或<s>
+<ins>文本添加下划线</ins>或<u>
+<p>这是普通段落</p>
+Hello world!
+</body>
+</html>
+
