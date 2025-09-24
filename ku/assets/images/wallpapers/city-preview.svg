@@ -1,0 +1,22 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="cityGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#37474F"/>
+<stop offset="0.5" stop-color="#546E7A"/>
+<stop offset="1" stop-color="#607D8B"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#cityGradient)"/>
+<rect x="50" y="80" width="30" height="120" fill="#263238"/>
+<rect x="90" y="60" width="35" height="140" fill="#37474F"/>
+<rect x="140" y="40" width="40" height="160" fill="#263238"/>
+<rect x="190" y="70" width="30" height="130" fill="#37474F"/>
+<rect x="230" y="90" width="25" height="110" fill="#263238"/>
+<rect x="55" y="85" width="4" height="6" fill="#FFC107"/>
+<rect x="65" y="90" width="4" height="6" fill="#FFC107"/>
+<rect x="95" y="70" width="4" height="6" fill="#FFC107"/>
+<rect x="110" y="80" width="4" height="6" fill="#FFC107"/>
+<rect x="145" y="50" width="4" height="6" fill="#FFC107"/>
+<rect x="160" y="60" width="4" height="6" fill="#FFC107"/>
+<text x="150" y="25" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">都市夜景</text>
+</svg>

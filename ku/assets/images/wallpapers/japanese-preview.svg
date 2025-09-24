@@ -1,0 +1,22 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="japaneseGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#ffecd2"/>
+<stop offset="0.5" stop-color="#fcb69f"/>
+<stop offset="1" stop-color="#ff6b6b"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#japaneseGradient)"/>
+<circle cx="220" cy="40" r="25" fill="#ff4757" opacity="0.8"/>
+<path d="M50 120 Q100 100 150 120 T250 120" stroke="#2f3640" stroke-width="4" fill="none"/>
+<polygon points="80,140 100,120 120,140 100,160" fill="#2ecc71"/>
+<polygon points="160,135 180,115 200,135 180,155" fill="#27ae60"/>
+<polygon points="220,145 240,125 260,145 240,165" fill="#2ecc71"/>
+<circle cx="60" cy="60" r="3" fill="#ff4757">
+<animate attributeName="cy" values="60;50;60" dur="2s" repeatCount="indefinite"/>
+</circle>
+<circle cx="140" cy="70" r="2" fill="#ff4757">
+<animate attributeName="cy" values="70;60;70" dur="2.5s" repeatCount="indefinite"/>
+</circle>
+<text x="150" y="30" fill="#2f3640" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">日式风景</text>
+</svg>

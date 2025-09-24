@@ -1,0 +1,24 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="darkGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2d3748"/>
+<stop offset="0.5" stop-color="#1a202c"/>
+<stop offset="1" stop-color="#000000"/>
+</linearGradient>
+<radialGradient id="neonGradient" cx="150" cy="100" r="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00d4ff" opacity="0.3"/>
+<stop offset="1" stop-color="#00d4ff" opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="300" height="200" fill="url(#darkGradient)"/>
+<ellipse cx="150" cy="100" rx="80" ry="50" fill="url(#neonGradient)"/>
+<path d="M50 150 Q150 100 250 150" stroke="#00d4ff" stroke-width="2" fill="none" opacity="0.6"/>
+<path d="M30 120 Q150 80 270 120" stroke="#ff0080" stroke-width="1.5" fill="none" opacity="0.4"/>
+<circle cx="80" cy="60" r="2" fill="#00d4ff" opacity="0.8">
+<animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+</circle>
+<circle cx="220" cy="140" r="1.5" fill="#ff0080" opacity="0.7">
+<animate attributeName="opacity" values="0.7;0.2;0.7" dur="3s" repeatCount="indefinite"/>
+</circle>
+<text x="150" y="30" fill="#00d4ff" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">赛博朋克</text>
+</svg>

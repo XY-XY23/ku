@@ -1,0 +1,15 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="natureGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4CAF50"/>
+<stop offset="0.5" stop-color="#81C784"/>
+<stop offset="1" stop-color="#66BB6A"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#natureGradient)"/>
+<ellipse cx="150" cy="180" rx="100" ry="20" fill="#2E7D32" opacity="0.6"/>
+<ellipse cx="80" cy="160" rx="40" ry="15" fill="#1B5E20" opacity="0.4"/>
+<ellipse cx="220" cy="170" rx="60" ry="18" fill="#1B5E20" opacity="0.4"/>
+<circle cx="100" cy="50" r="15" fill="#FFF59D" opacity="0.8"/>
+<text x="150" y="110" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">自然风光</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="forestGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1B5E20"/>
+<stop offset="0.5" stop-color="#388E3C"/>
+<stop offset="1" stop-color="#4CAF50"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#forestGradient)"/>
+<ellipse cx="70" cy="120" rx="25" ry="60" fill="#0D2818"/>
+<ellipse cx="150" cy="110" rx="30" ry="70" fill="#0D2818"/>
+<ellipse cx="230" cy="125" rx="28" ry="65" fill="#0D2818"/>
+<ellipse cx="100" cy="140" rx="20" ry="50" fill="#2E7D32"/>
+<ellipse cx="200" cy="135" rx="25" ry="55" fill="#2E7D32"/>
+<circle cx="60" cy="40" r="8" fill="#FFF59D" opacity="0.6"/>
+<text x="150" y="30" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">森林深处</text>
+</svg>

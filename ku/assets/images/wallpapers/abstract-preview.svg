@@ -1,0 +1,16 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="abstractGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E91E63"/>
+<stop offset="0.3" stop-color="#9C27B0"/>
+<stop offset="0.7" stop-color="#673AB7"/>
+<stop offset="1" stop-color="#3F51B5"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#abstractGradient)"/>
+<circle cx="80" cy="60" r="25" fill="#FFFFFF" opacity="0.2"/>
+<circle cx="220" cy="140" r="35" fill="#FFFFFF" opacity="0.15"/>
+<polygon points="150,50 180,100 120,100" fill="#FFFFFF" opacity="0.3"/>
+<rect x="200" y="40" width="40" height="40" fill="#FFFFFF" opacity="0.25" transform="rotate(45 220 60)"/>
+<text x="150" y="110" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">抽象艺术</text>
+</svg>

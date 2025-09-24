@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置菜单测试</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            color: white;
+        }
+        .test-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #45a049;
+        }
+        .test-button.danger {
+            background: #f44336;
+        }
+        .test-button.danger:hover {
+            background: #da190b;
+        }
+        .test-result {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .nav-test {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .settings-dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        .settings-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            width: 320px;
+            z-index: 9999;
+            display: none;
+        }
+        .settings-menu.active {
+            display: block !important;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 设置菜单功能测试</h1>
+
+        <div class="test-section">
+            <h2>📋 测试项目</h2>
+            <p>这个页面用于测试设置菜单的各项功能是否正常工作</p>
+        </div>
+
+        <div class="test-section">
+            <h3>🎛️ 设置菜单测试</h3>
+            <div class="nav-test">
+                <div class="settings-dropdown">
+                    <a href="#" id="settings-toggle">⚙️ 设置</a>
+                    <div class="settings-menu" id="settings-menu">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <h3>设置菜单</h3>
+                            <button id="close-settings" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; cursor: pointer;">✖</button>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div>🎨 主题: <select id="theme-select"><option>暗色</option><option>亮色</option></select></div>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <div>📝 字体: <select id="font-select"><option>默认</option><option>大字体</option></select></div>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <label>
+                                <input type="checkbox" id="effects-toggle"> 🎆 特效开关
+                            </label>
+                        </div>
+                        <button style="width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 5px;">保存设置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 功能测试</h3>
+            <button class="test-button" onclick="testSettingsToggle()">测试设置菜单切换</button>
+            <button class="test-button" onclick="testElementsExist()">检查元素是否存在</button>
+            <button class="test-button" onclick="testEventListeners()">测试事件监听器</button>
+            <button class="test-button danger" onclick="clearResults()">清除结果</button>
+            <div id="test-results" class="test-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 控制台测试</h3>
+            <p>打开浏览器开发者工具的控制台，运行以下命令：</p>
+            <ul>
+                <li><code>testSettingsToggle()</code> - 测试设置菜单切换</li>
+                <li><code>document.getElementById('settings-menu')</code> - 检查设置菜单元素</li>
+                <li><code>emergencyRepair()</code> - 运行紧急修复（如果可用）</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        function log(message) {
+            testResults.push(`[${new Date().toLocaleTimeString()}] ${message}`);
+            updateResults();
+            console.log(message);
+        }
+
+        function updateResults() {
+            document.getElementById('test-results').textContent = testResults.join('\n');
+        }
+
+        function clearResults() {
+            testResults = [];
+            updateResults();
+        }
+
+        function testElementsExist() {
+            log('🔍 检查关键元素是否存在...');
+
+            const elements = [
+                { id: 'settings-toggle', name: '设置按钮' },
+                { id: 'settings-menu', name: '设置菜单' },
+                { id: 'close-settings', name: '关闭按钮' }
+            ];
+
+            elements.forEach(elem => {
+                const element = document.getElementById(elem.id);
+                if (element) {
+                    log(`✅ ${elem.name} 存在`);
+                } else {
+                    log(`❌ ${elem.name} 不存在`);
+                }
+            });
+        }
+
+        function testSettingsToggle() {
+            log('🎛️ 测试设置菜单切换功能...');
+
+            const settingsToggle = document.getElementById('settings-toggle');
+            const settingsMenu = document.getElementById('settings-menu');
+
+            if (!settingsToggle || !settingsMenu) {
+                log('❌ 关键元素缺失');
+                return;
+            }
+
+            const isVisible = settingsMenu.style.display === 'block' || settingsMenu.classList.contains('active');
+            log(`📊 当前菜单状态: ${isVisible ? '显示' : '隐藏'}`);
+
+            // 模拟点击
+            settingsToggle.click();
+
+            setTimeout(() => {
+                const newState = settingsMenu.style.display === 'block' || settingsMenu.classList.contains('active');
+                log(`📊 点击后菜单状态: ${newState ? '显示' : '隐藏'}`);
+                log(`✅ 切换功能${newState !== isVisible ? '正常' : '可能异常'}`);
+            }, 100);
+        }
+
+        function testEventListeners() {
+            log('👂 测试事件监听器...');
+
+            const settingsToggle = document.getElementById('settings-toggle');
+            if (settingsToggle) {
+                const hasClickHandler = settingsToggle.onclick !== null;
+                const hasEventListeners = getEventListeners && getEventListeners(settingsToggle).click;
+
+                log(`📊 onclick处理器: ${hasClickHandler ? '存在' : '不存在'}`);
+                log(`📊 事件监听器: ${hasEventListeners ? '存在' : '不存在或无法检测'}`);
+            }
+        }
+
+        // 简单的设置菜单功能实现
+        function initializeSettings() {
+            log('🚀 初始化设置菜单...');
+
+            const settingsToggle = document.getElementById('settings-toggle');
+            const settingsMenu = document.getElementById('settings-menu');
+            const closeSettings = document.getElementById('close-settings');
+
+            if (settingsToggle && settingsMenu) {
+                settingsToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    log('🖱️ 设置按钮被点击');
+
+                    const isActive = settingsMenu.classList.contains('active');
+                    if (isActive) {
+                        settingsMenu.classList.remove('active');
+                        log('❌ 菜单已隐藏');
+                    } else {
+                        settingsMenu.classList.add('active');
+                        log('✅ 菜单已显示');
+                    }
+                });
+
+                if (closeSettings) {
+                    closeSettings.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        settingsMenu.classList.remove('active');
+                        log('❌ 通过关闭按钮隐藏菜单');
+                    });
+                }
+
+                // 点击外部关闭
+                document.addEventListener('click', function(e) {
+                    if (!settingsToggle.contains(e.target) && !settingsMenu.contains(e.target)) {
+                        if (settingsMenu.classList.contains('active')) {
+                            settingsMenu.classList.remove('active');
+                            log('❌ 通过点击外部隐藏菜单');
+                        }
+                    }
+                });
+
+                log('✅ 设置菜单初始化完成');
+            } else {
+                log('❌ 设置菜单初始化失败 - 元素缺失');
+            }
+        }
+
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            log('📄 页面加载完成');
+            initializeSettings();
+        });
+
+        // 全局测试函数
+        window.testSettingsToggle = testSettingsToggle;
+        window.testElementsExist = testElementsExist;
+        window.testEventListeners = testEventListeners;
+    </script>
+</body>
+</html>

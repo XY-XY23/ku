@@ -1,0 +1,19 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="spaceGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0F0C29"/>
+<stop offset="0.5" stop-color="#24243e"/>
+<stop offset="1" stop-color="#302b63"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#spaceGradient)"/>
+<circle cx="50" cy="40" r="2" fill="#FFFFFF"/>
+<circle cx="150" cy="30" r="1.5" fill="#FFFFFF"/>
+<circle cx="250" cy="60" r="1" fill="#FFFFFF"/>
+<circle cx="200" cy="120" r="1.5" fill="#FFFFFF"/>
+<circle cx="80" cy="160" r="1" fill="#FFFFFF"/>
+<circle cx="270" cy="150" r="2" fill="#FFFFFF"/>
+<circle cx="30" cy="100" r="1" fill="#FFFFFF"/>
+<circle cx="180" cy="80" r="1" fill="#FFFFFF"/>
+<text x="150" y="110" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">太空星系</text>
+</svg>

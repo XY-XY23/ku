@@ -1,0 +1,17 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="oceanGradient" x1="0" y1="0" x2="300" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#006064"/>
+<stop offset="0.5" stop-color="#0097A7"/>
+<stop offset="1" stop-color="#00BCD4"/>
+</linearGradient>
+</defs>
+<rect width="300" height="200" fill="url(#oceanGradient)"/>
+<ellipse cx="150" cy="180" rx="120" ry="15" fill="#004D40" opacity="0.3"/>
+<ellipse cx="80" cy="160" rx="60" ry="8" fill="#004D40" opacity="0.2"/>
+<ellipse cx="230" cy="170" rx="40" ry="5" fill="#004D40" opacity="0.2"/>
+<circle cx="50" cy="50" r="20" fill="#FFF59D" opacity="0.9"/>
+<path d="M100 100 Q150 80 200 100 T300 100" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.6"/>
+<path d="M0 120 Q75 100 150 120 T300 120" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.4"/>
+<text x="150" y="110" fill="#FFFFFF" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">海洋蓝调</text>
+</svg>
