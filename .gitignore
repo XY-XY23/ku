@@ -1,0 +1,68 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.DS_Store
+
+# Maven
+backend/target/
+backend/pom.xml.tag
+backend/pom.xml.releaseBackup
+backend/pom.xml.versionsBackup
+backend/pom.xml.next
+backend/release.properties
+backend/dependency-reduced-pom.xml
+backend/buildNumber.properties
+backend/.mvn/timing.properties
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+
+# Spring Boot
+backend/HELP.md
+backend/spring-shell.log
+
+# H2 Database
+*.db
+*.trace.db
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Node modules (如果使用)
+node_modules/
+package-lock.json
+yarn.lock
+
+# 环境配置
+.env
+.env.local
+.env.production
+
+# 用户数据(如果本地存储)
+ku/data/
+backend/uploads/

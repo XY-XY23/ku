@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理 - 星辰导航</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <style>
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-title i {
+            color: rgba(138, 43, 226, 0.8);
+        }
+
+        .back-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(138, 43, 226, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(155, 89, 182, 0.2));
+            padding: 25px;
+            border-radius: 15px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            opacity: 0.6;
+        }
+
+        .users-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box-admin {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box-admin input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .search-box-admin i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .users-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            color: rgba(138, 43, 226, 0.9);
+        }
+
+        .users-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .user-avatar-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-active {
+            background: rgba(81, 207, 102, 0.2);
+            color: #51cf66;
+        }
+
+        .status-banned {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .status-inactive {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        .role-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            background: rgba(138, 43, 226, 0.2);
+            color: rgba(138, 43, 226, 0.9);
+        }
+
+        .role-admin {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            margin: 0 3px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        .btn-ban {
+            background: rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-ban:hover {
+            background: rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-unban {
+            background: rgba(81, 207, 102, 0.3);
+        }
+
+        .btn-unban:hover {
+            background: rgba(81, 207, 102, 0.5);
+        }
+
+        .btn-delete {
+            background: rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-delete:hover {
+            background: rgba(255, 107, 107, 0.7);
+        }
+
+        .btn-role {
+            background: rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-role:hover {
+            background: rgba(138, 43, 226, 0.5);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .loading i {
+            font-size: 3rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: rgba(26, 26, 46, 0.95);
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification.success {
+            border-left: 4px solid #51cf66;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .notification.info {
+            border-left: 4px solid #339af0;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">
+                <i class="fas fa-users-cog"></i>
+                用户管理
+            </h1>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                返回首页
+            </a>
+        </div>
+
+        <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+                <h3>总用户数</h3>
+                <div class="stat-value">
+                    <i class="fas fa-users"></i>
+                    <span id="total-users">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>活跃用户</h3>
+                <div class="stat-value">
+                    <i class="fas fa-user-check"></i>
+                    <span id="active-users">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>已封禁</h3>
+                <div class="stat-value">
+                    <i class="fas fa-user-slash"></i>
+                    <span id="banned-users">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>管理员</h3>
+                <div class="stat-value">
+                    <i class="fas fa-user-shield"></i>
+                    <span id="admin-users">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="users-section">
+            <div class="section-header">
+                <h2 style="color: #fff; margin: 0;">用户列表</h2>
+                <div class="search-box-admin">
+                    <input type="text" id="search-users" placeholder="搜索用户名或邮箱...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div id="users-container">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>加载中...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/auth.js"></script>
+    <script>
+        let allUsers = [];
+
+        // 页面加载时检查权限
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!authManager.token) {
+                alert('请先登录');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            if (!authManager.currentUser ||
+                (authManager.currentUser.role !== 'ADMIN' && authManager.currentUser.role !== 'SUPER_ADMIN')) {
+                alert('您没有权限访问此页面');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            await loadUsers();
+        });
+
+        async function loadUsers() {
+            try {
+                const response = await authManager.apiCall('/admin/users', 'GET');
+                if (response.success) {
+                    allUsers = response.data;
+                    updateStats();
+                    renderUsers(allUsers);
+                }
+            } catch (error) {
+                showNotification('加载用户列表失败: ' + error.message, 'error');
+                document.getElementById('users-container').innerHTML =
+                    '<p style="text-align: center; color: rgba(255, 255, 255, 0.6);">加载失败</p>';
+            }
+        }
+
+        function updateStats() {
+            const total = allUsers.length;
+            const active = allUsers.filter(u => u.status === 'ACTIVE').length;
+            const banned = allUsers.filter(u => u.status === 'BANNED').length;
+            const admins = allUsers.filter(u => u.role === 'ADMIN' || u.role === 'SUPER_ADMIN').length;
+
+            document.getElementById('total-users').textContent = total;
+            document.getElementById('active-users').textContent = active;
+            document.getElementById('banned-users').textContent = banned;
+            document.getElementById('admin-users').textContent = admins;
+        }
+
+        function renderUsers(users) {
+            const container = document.getElementById('users-container');
+
+            if (users.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: rgba(255, 255, 255, 0.6);">暂无用户</p>';
+                return;
+            }
+
+            const table = `
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>用户</th>
+                            <th>邮箱</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>登录次数</th>
+                            <th>最后登录</th>
+                            <th>注册时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${users.map(user => `
+                            <tr>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <img src="${user.avatar || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}"
+                                             alt="${user.username}" class="user-avatar-small">
+                                        <div>
+                                            <div style="font-weight: 600;">${user.username}</div>
+                                            <div style="font-size: 0.85rem; opacity: 0.7;">${user.nickname || '-'}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>${user.email}</td>
+                                <td><span class="role-badge ${user.role === 'ADMIN' || user.role === 'SUPER_ADMIN' ? 'role-admin' : ''}">${user.role}</span></td>
+                                <td><span class="status-badge status-${user.status.toLowerCase()}">${getStatusText(user.status)}</span></td>
+                                <td>${user.loginCount || 0}</td>
+                                <td>${user.lastLoginTime ? formatDate(user.lastLoginTime) : '-'}</td>
+                                <td>${formatDate(user.createdAt)}</td>
+                                <td>
+                                    ${user.role !== 'SUPER_ADMIN' ? `
+                                        ${user.status === 'ACTIVE' ?
+                                            `<button class="action-btn btn-ban" onclick="banUser(${user.id})"><i class="fas fa-ban"></i> 封禁</button>` :
+                                            `<button class="action-btn btn-unban" onclick="unbanUser(${user.id})"><i class="fas fa-check"></i> 解封</button>`
+                                        }
+                                        <button class="action-btn btn-role" onclick="changeRole(${user.id}, '${user.role}')"><i class="fas fa-user-tag"></i> 角色</button>
+                                        <button class="action-btn btn-delete" onclick="deleteUser(${user.id})"><i class="fas fa-trash"></i> 删除</button>
+                                    ` : '<span style="opacity: 0.5;">超级管理员</span>'}
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = table;
+        }
+
+        async function banUser(userId) {
+            if (!confirm('确定要封禁此用户吗?')) return;
+
+            try {
+                await authManager.apiCall(`/admin/users/${userId}/ban`, 'POST');
+                showNotification('用户已封禁', 'success');
+                await loadUsers();
+            } catch (error) {
+                showNotification('封禁失败: ' + error.message, 'error');
+            }
+        }
+
+        async function unbanUser(userId) {
+            try {
+                await authManager.apiCall(`/admin/users/${userId}/unban`, 'POST');
+                showNotification('用户已解封', 'success');
+                await loadUsers();
+            } catch (error) {
+                showNotification('解封失败: ' + error.message, 'error');
+            }
+        }
+
+        async function deleteUser(userId) {
+            if (!confirm('确定要删除此用户吗? 此操作不可恢复!')) return;
+
+            try {
+                await authManager.apiCall(`/admin/users/${userId}`, 'DELETE');
+                showNotification('用户已删除', 'success');
+                await loadUsers();
+            } catch (error) {
+                showNotification('删除失败: ' + error.message, 'error');
+            }
+        }
+
+        async function changeRole(userId, currentRole) {
+            const newRole = prompt(`当前角色: ${currentRole}\n请输入新角色 (USER/ADMIN):`, currentRole);
+            if (!newRole || newRole === currentRole) return;
+
+            if (!['USER', 'ADMIN'].includes(newRole.toUpperCase())) {
+                alert('无效的角色');
+                return;
+            }
+
+            try {
+                await authManager.apiCall(`/admin/users/${userId}/role?role=${newRole.toUpperCase()}`, 'PUT');
+                showNotification('角色已更新', 'success');
+                await loadUsers();
+            } catch (error) {
+                showNotification('更新失败: ' + error.message, 'error');
+            }
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'ACTIVE': '正常',
+                'BANNED': '已封禁',
+                'INACTIVE': '未激活',
+                'DELETED': '已删除'
+            };
+            return statusMap[status] || status;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('zh-CN');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i> ${message}`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // 搜索功能
+        document.getElementById('search-users').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = allUsers.filter(user =>
+                user.username.toLowerCase().includes(searchTerm) ||
+                user.email.toLowerCase().includes(searchTerm) ||
+                (user.nickname && user.nickname.toLowerCase().includes(searchTerm))
+            );
+            renderUsers(filtered);
+        });
+    </script>
+</body>
+</html>
